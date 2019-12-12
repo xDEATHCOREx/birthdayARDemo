@@ -2,7 +2,24 @@
 <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
 <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
-
+<script type="text/javascript" src="/vconsole.min.js"></script>
+<script type="text/javascript">
+  AFRAME.registerComponent('registerevents', {
+    init: function () {
+      var marker = this.el;
+      marker.addEventListener('markerFound', function() {
+        var markerId = marker.id;
+        console.log('markerFound', markerId);
+        // TODO: Add your own code here to react to the marker being found.
+      });
+      marker.addEventListener('markerLost', function() {
+        var markerId = marker.id;
+        console.log('markerLost', markerId);
+        // TODO: Add your own code here to react to the marker being lost.
+      });
+    }
+  });
+</script>
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs='debugUIEnabled: true;'>
 
@@ -16,7 +33,7 @@
     <a-asset-item id="exoItalicFont" src="font/Fexo2BlackItalic.typeface.json"></a-asset-item>    
  
     </a-assets>
-        <a-marker type='pattern' url='res/pattern-Chinamobile.patt'>
+        <a-marker type='pattern' url='res/pattern-Chinamobile.patt' emitevents='true'>
           <a-entity
           position="0 4 0"
           text-geometry="value: Happy birthday; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 0.3; height: 1;"
