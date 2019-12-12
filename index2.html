@@ -5,10 +5,12 @@
 <script type="text/javascript" src="./vconsole.min.js"></script>
 <script type="text/javascript">
   var vconsole = new VConsole()
+
   AFRAME.registerComponent('registerevents', {
     init: function () {
       var marker = this.el;
       marker.addEventListener('markerFound', function() {
+        console.log(marker)
         var markerId = marker.id;
         console.log('markerFound', markerId);
         // TODO: Add your own code here to react to the marker being found.
