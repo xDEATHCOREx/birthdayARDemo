@@ -60,7 +60,7 @@
           animatedMarker.addEventListener('click', function(ev, target){
               console.log("aEntity:",aEntity)
               console.log("clicked",ev.detail)
-              const intersectedElement = ev && ev.detail && ev.detail.cursorEl;
+              const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
               if (aEntity && intersectedElement === aEntity) {
                   $(document).dialog({
                      type : 'notice',
@@ -95,8 +95,9 @@
     <a-scene embedded arjs='debugUIEnabled: true;'>
       
   <a-assets>
-    <a-asset-item id="doge" src="./res/model-doge/scene.gltf"></a-asset-item>
-    <!--<a-asset-item id="loveDog" src="./res/model-loveDog/scene.gltf"></a-asset-item>
+    <a-asset-item id="link" src="./res/model-link/scene.gltf"></a-asset-item>
+    <!--<a-asset-item id="doge" src="./res/model-doge/scene.gltf"></a-asset-item>
+    <a-asset-item id="loveDog" src="./res/model-loveDog/scene.gltf"></a-asset-item>
     <a-asset-item id="metalSlug" src="./res/model-metalSlug/scene.gltf"></a-asset-item>
     <a-asset-item id="desertDancer" src="./res/model-desertDancer/scene.gltf"></a-asset-item>-->
   </a-assets>
@@ -106,9 +107,9 @@
             <a-entity 
               id="animated-model" 
               position='0 0 0' 
-              gltf-model="#doge" 
+              gltf-model="#link" 
               scale="0.05 0.05 0.05" 
-              animation-mixer="clip: Take 01">
+              >
             </a-entity>
 
         </a-marker>
