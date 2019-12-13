@@ -60,7 +60,7 @@
           animatedMarker.addEventListener('click', function(ev, target){
               console.log("aEntity:",aEntity)
               console.log("clicked",ev.detail)
-              const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+              const intersectedElement = ev && ev.detail && ev.detail.cursorEl;
               if (aEntity && intersectedElement === aEntity) {
                   $(document).dialog({
                      type : 'notice',
