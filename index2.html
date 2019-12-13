@@ -26,7 +26,7 @@
         console.log('markerFound', markerId);
         // TODO: Add your own code here to react to the marker being found.
         $(document).dialog({
-               type : 'toast',
+               type : 'notice',
                infoText : "marker found",
                autoClose : 1000
             });
@@ -39,7 +39,7 @@
         console.log('markerLost', markerId);
         // TODO: Add your own code here to react to the marker being lost.
         $(document).dialog({
-               type : 'toast',
+               type : 'notice',
                infoText : "marker lost",
                autoClose : 1000
             });
@@ -61,7 +61,7 @@
               const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
               if (aEntity && intersectedElement === aEntity) {
                   $(document).dialog({
-                     type : 'toast',
+                     type : 'notice',
                      infoText : "触发点击事件",
                      autoClose : 1000
                   });
@@ -102,7 +102,7 @@
     <a-asset-item id="exoItalicFont" src="font/Fexo2BlackItalic.typeface.json"></a-asset-item>    
  
     </a-assets>
-        <a-marker id='animated-marker' type='pattern' url='res/pattern-Chinamobile.patt' registerevents markerhandler>
+        <a-marker id='animated-marker' emitevents="true" cursor="rayOrigin: touch" type='pattern' url='res/pattern-Chinamobile.patt' registerevents markerhandler>
           <a-entity
           position="0 4 0"
           text-geometry="value: Happy birthday; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 0.3; height: 1;"
