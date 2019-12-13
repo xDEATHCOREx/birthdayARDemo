@@ -92,16 +92,33 @@
 </style>
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs='debugUIEnabled: true;'>
+      
+  <a-assets>
+    <a-asset-item id="doge" src="./res/model-doge/scene.gltf"></a-asset-item>
+    <a-asset-item id="loveDog" src="./res/model-loveDog/scene.gltf"></a-asset-item>
+    <a-asset-item id="metalSlug" src="./res/model-metalSlug/scene.gltf"></a-asset-item>
+    <a-asset-item id="desertDancer" src="./res/model-desertDancer/scene.gltf"></a-asset-item>
+  </a-assets>
 
         <a-marker id='animated-marker' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-Chinamobile.patt' registerevents markerhandler>
 
-            <a-entity id="animated-model" position='0 0 0' gltf-model="url(res/model-doge/scene.gltf)" scale="0.05 0.05 0.05" animation-mixer="clip: Take 01"></a-entity>
+            <a-entity id="animated-model" position='0 0 0' gltf-model="#doge" scale="0.05 0.05 0.05" animation-mixer="clip: Take 01"></a-entity>
 
         </a-marker>
+
          <a-marker id='animated-marker2' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-default.patt' registerevents >
 
-            <a-entity id="animated-model2" position='0 0 0' gltf-model="url(res/model-loveDog/scene.gltf)" scale="0.05 0.05 0.05" ></a-entity>
+            <a-entity id="animated-model2" position='0 0 0' gltf-model="#loveDog" scale="0.025 0.025 0.025" ></a-entity>
+        </a-marker>
 
+         <a-marker id='animated-marker3' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-metalSlug.patt' registerevents >
+
+            <a-entity id="animated-model3" position='0 0 0' gltf-model="#metalSlug" scale="0.025 0.025 0.025" ></a-entity>
+        </a-marker>
+
+        <a-marker id='animated-marker4' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-desertDancer.patt' registerevents >
+
+            <a-entity id="animated-model4" position='0 0 0' gltf-model="#desertDancer" scale="0.025 0.025 0.025" ></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
