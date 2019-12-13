@@ -67,7 +67,7 @@
                      autoClose : 1000
                   });
                   const scale = aEntity.getAttribute('scale');
-                  Object.keys(scale).forEach((key) => scale[key] = scale[key] + 0.05);
+                  Object.keys(scale).forEach((key) => scale[key] = scale[key] + 0.005);
                   aEntity.setAttribute('scale', scale);
               }
           });
