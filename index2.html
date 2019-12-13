@@ -26,6 +26,9 @@
                infoText : "marker found",
                autoClose : 1000
             });
+        $('.callback-text,.callback-logo').css({
+          display:'block'
+        })
       });
       marker.addEventListener('markerLost', function() {
         var markerId = marker.id;
@@ -36,6 +39,9 @@
                infoText : "marker lost",
                autoClose : 1000
             });
+        $('.callback-text,.callback-logo').css({
+          display:'none'
+        })
       });
     }
   });
@@ -48,11 +54,13 @@
     top: 70px;
     left: 0px;
     width: 100%;
+    display: none;
   }
   .callback-logo{
      position: fixed;
      top: 10px;
      left: 10px;
+    display: none;
   }
 </style>
 <body style='margin : 0px; overflow: hidden;'>
