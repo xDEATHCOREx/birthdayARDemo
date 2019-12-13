@@ -7,6 +7,8 @@
 <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
 <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+
+
 <script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="./vconsole.min.js"></script>
 <script type="text/javascript" src="./dialog.js"></script>
@@ -45,6 +47,28 @@
       });
     }
   });
+
+  AFRAME.registerComponent('markerhandler', {
+
+      init: function() {
+          const animatedMarker = document.querySelector("#animated-marker");
+          const aEntity = document.querySelector("#animated-model");
+
+          // every click, we make our model grow in size :)
+          animatedMarker.addEventListener('click', function(ev, target){
+              const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
+              if (aEntity && intersectedElement === aEntity) {
+                  $(document).dialog({
+                     type : 'toast',
+                     infoText : "触发点击事件",
+                     autoClose : 1000
+                  });
+                  const scale = aEntity.getAttribute('scale');
+                  Object.keys(scale).forEach((key) => scale[key] = scale[key] + 1);
+                  aEntity.setAttribute('scale', scale);
+              }
+          });
+  }});
 </script>
 <style type="text/css">
   .callback-text{
@@ -76,20 +100,20 @@
     <a-asset-item id="exoItalicFont" src="font/Fexo2BlackItalic.typeface.json"></a-asset-item>    
  
     </a-assets>
-        <a-marker id='test-marker' type='pattern' url='res/pattern-Chinamobile.patt' registerevents>
+        <a-marker id='animated-marker' type='pattern' url='res/pattern-Chinamobile.patt' registerevents markerhandler>
           <a-entity
           position="0 4 0"
           text-geometry="value: Happy birthday; font: #dawningFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 0.3; height: 1;"
           material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"
         ></a-entity>
             <a-entity position='0 2 0' text-geometry="value: Happy birthday; font: #exoFont; bevelEnabled: true; bevelSize: 0.1; bevelThickness: 0.1; curveSegments: 1; size: 0.2; height: 0.5;" material="color:pink; metalness:0.9; roughness: 0.05; sphericalEnvMap: #chrome;"></a-entity>
-            <a-entity id="entity" position='0 0 0' gltf-model="url(res/scene.gltf)" scale="0.05 0.05 0.05" animation-mixer="clip: Take 01"></a-entity>
+            <a-entity id="animated-model" position='0 0 0' gltf-model="url(res/scene.gltf)" scale="0.05 0.05 0.05" animation-mixer="clip: Take 01"></a-entity>
 
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
     <div class="callback-text">可在事件回调中自定义要显示的东西
-      <div>文字图像链接等</div>
+      <div>（文字图像链接等）</div>
     </div>
     <img class="callback-logo" src="./mmLogo.jpg">
 </body>
