@@ -6,8 +6,6 @@
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://raw.githack.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
-
-
 <script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="./vconsole.min.js"></script>
 <script type="text/javascript" src="./dialog.js"></script>
@@ -20,10 +18,8 @@
     init: function () {
       var marker = this.el;
       marker.addEventListener('markerFound', function() {
-        console.log(marker)
         var markerId = marker.id;
         console.log('markerFound', markerId);
-        // TODO: Add your own code here to react to the marker being found.
         $(document).dialog({
                type : 'notice',
                infoText : "marker found",
@@ -36,12 +32,11 @@
       marker.addEventListener('markerLost', function() {
         var markerId = marker.id;
         console.log('markerLost', markerId);
-        // TODO: Add your own code here to react to the marker being lost.
         $(document).dialog({
                type : 'notice',
                infoText : "marker lost",
                autoClose : 1000
-            });
+        });
         $('.callback-text,.callback-logo').css({
           display:'none'
         })
@@ -54,8 +49,6 @@
       init: function() {
           const animatedMarker = document.querySelector("#animated-marker");
           const aEntity = document.querySelector("#animated-model");
-
-          // every click, we make our model grow in size :)
           animatedMarker.addEventListener('click', function(ev, target){
               console.log("aEntity:",aEntity)
               console.log("clicked",ev.detail)
@@ -91,17 +84,11 @@
   }
 </style>
 <body style='margin : 0px; overflow: hidden;'>
-    <a-scene embedded arjs='debugUIEnabled: true;'>
-      
+    <a-scene embedded arjs='debugUIEnabled: true;'>     
   <a-assets>
     <a-asset-item id="doge" src="./res/model-doge/scene.gltf"></a-asset-item>
-    <!--<a-asset-item id="loveDog" src="./res/model-loveDog/scene.gltf"></a-asset-item>
-    <a-asset-item id="metalSlug" src="./res/model-metalSlug/scene.gltf"></a-asset-item>
-    <a-asset-item id="desertDancer" src="./res/model-desertDancer/scene.gltf"></a-asset-item>-->
   </a-assets>
-
         <a-marker id='animated-marker' emitevents="true" type='barcode' value='6' registerevents>
-
             <a-entity 
               id="animated-model" 
               position='0 0 0' 
@@ -109,23 +96,7 @@
               scale="0.05 0.05 0.05" 
               animation-mixer="clip: Take 01">
             </a-entity>
-
-        </a-marker>
-
-          <!--<a-marker id='animated-marker2' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-default.patt' registerevents >
-
-            <a-entity id="animated-model2" position='0 0 0' gltf-model="#loveDog" scale="0.025 0.025 0.025" ></a-entity>
-        </a-marker>
-
-         <a-marker id='animated-marker3' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-metalSlug.patt' registerevents >
-
-            <a-entity id="animated-model3" position='0 0 0' gltf-model="#metalSlug" scale="0.025 0.025 0.025" ></a-entity>
-        </a-marker>
-
-        <a-marker id='animated-marker4' emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='res/pattern-desertDancer.patt' registerevents >
-
-            <a-entity id="animated-model4" position='0 0 0' gltf-model="#desertDancer" scale="0.025 0.025 0.025" ></a-entity>
-        </a-marker>-->
+        </a-marker>     
         <a-entity camera></a-entity>
     </a-scene>
     <div class="callback-text">可在事件回调中自定义要显示的东西
