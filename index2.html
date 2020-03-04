@@ -21,10 +21,10 @@
         var markerId = marker.id;
         console.log('markerFound', markerId);
         $(document).dialog({
-               type : 'notice',
-               infoText : "marker found",
-               autoClose : 1000
-            });
+          type : 'notice',
+          infoText : "marker found",
+          autoClose : 1000
+        });
         $('.callback-text,.callback-logo').css({
           display:'block'
         })
@@ -33,9 +33,9 @@
         var markerId = marker.id;
         console.log('markerLost', markerId);
         $(document).dialog({
-               type : 'notice',
-               infoText : "marker lost",
-               autoClose : 1000
+          type : 'notice',
+          infoText : "marker lost",
+          autoClose : 1000
         });
         $('.callback-text,.callback-logo').css({
           display:'none'
@@ -85,19 +85,24 @@
 </style>
 <body style='margin : 0px; overflow: hidden;'>
     <a-scene embedded arjs='debugUIEnabled: true;'>     
-     <a-assets>
-      <a-asset-item id="doge" src="./res/model-doge/scene.gltf"></a-asset-item>
-     </a-assets>
-     <a-marker id='animated-marker' emitevents="true" type='pattern' url='./res/pattern-maker.patt' registerevents>
-      <a-entity 
-        id="animated-model" 
-        position='0 0 0' 
-        gltf-model="#doge" 
-        scale="0.05 0.05 0.05" 
-        animation-mixer="clip: Take 01">
-      </a-entity>
-     </a-marker>     
-     <a-entity camera></a-entity>
+      <a-assets>
+        <a-asset-item id="doge" src="./res/model-doge/scene.gltf"></a-asset-item>
+      </a-assets>
+      <a-marker 
+          id='animated-marker' 
+          emitevents="true" 
+          type='pattern' 
+          url='./res/pattern-maker.patt'
+          registerevents>
+        <a-entity 
+          id="animated-model" 
+          position='0 0 0' 
+          gltf-model="#doge" 
+          scale="0.05 0.05 0.05" 
+          animation-mixer="clip: Take 01">
+        </a-entity>
+      </a-marker>     
+      <a-entity camera></a-entity>
     </a-scene>
     <div class="callback-text">可在事件回调中自定义要显示的东西
       <div>（文字图像链接等）</div>
